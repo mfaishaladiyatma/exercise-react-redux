@@ -1,5 +1,6 @@
-const initialState = {
-    count: 0
+const initialState = { 
+    count: 0,
+    num: ''
 }
 
 export default function counterReducer(state = initialState, action) {
@@ -14,6 +15,12 @@ export default function counterReducer(state = initialState, action) {
                 ...state,
                 count: state.count - 1
             }
+        case 'setCounterAction':
+            return {
+                ...state,
+                num: action.payload
+            }
+
         default:
             return state
     }

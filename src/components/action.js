@@ -4,7 +4,11 @@ const incrementAction = {
 const reductionAction = {
     type: 'reduction-count',
 }
+const setCounterAction = (num) =>({
+    type: 'setCounterAction',
+    payload: num
+})
 
 export {
-    incrementAction, reductionAction
+    incrementAction, reductionAction, setCounterAction
 }
