@@ -3,7 +3,7 @@ import counterReducer from "./reducer"
 
 const store = createStore(counterReducer)
 store.dispatch({type: 'increment-count'})
-store.dispatch({type: 'setCounterAction'})
+// store.dispatch({type: 'setCounterAction'})
 console.log(store.getState())
 
 export default store

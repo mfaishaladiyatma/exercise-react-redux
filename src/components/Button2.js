@@ -4,9 +4,10 @@ import React from 'react'
 import { reductionAction, setCounterAction } from "./action"
 
 function Button2(props) {
-    const [input, setInput] = useState()
+    const [input, setInput] = useState('')
     const clicked = (e) => {
-    setInput([...input, props.set(e.target.value)])
+      e.preventDefault()
+      props.set(input)
     }
   return (
       <>
@@ -15,8 +16,8 @@ function Button2(props) {
         {/* <input onChange={(e) => (e.target.value)} type="text" value={props.value}/>
         <button onClick={ (e) => {e.preventDefault(); props.set(props.value)}}>SUBMIT</button>
         <p>{props.num}</p> */}
-        <input onChange={(e) => props.set(e.target.value)} type="text" />
-        <button onClick={ (e) => {e.preventDefault(); props.set()}}>SUBMIT</button>
+        <input onChange={(e) => setInput(e.target.value)} value={input} type="number" />
+        <button onClick={ clicked }>SUBMIT</button>
         <p>{props.num}</p>
     </form>
     </>
