@@ -1,15 +1,27 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from 'react'
 import React from 'react'
-import { reductionAction, setCounterAction } from "./action"
+import { reductionAction, setCounterAction, setTodosAction } from "./action"
 
 function Button2(props) {
+  const todos = useSelector((state) => state.todos.todo)
   const dispatch = useDispatch()
+  console.log(todos, '<<<TODOS')
 
     const [input, setInput] = useState('')
+    const [inputTodos, setInputTodos] = useState('')
+    const [arrTodos, setArrTodos] = useState([])
     const clicked = (e) => {
       e.preventDefault()
       dispatch(setCounterAction(input))
+    }
+
+    const clickedTodos = (e) => {
+      e.preventDefault()
+      dispatch(setTodosAction(inputTodos))
+      setArrTodos([...arrTodos, inputTodos])
+      setInputTodos("")
+      console.log(todos, '<<<afterTODOS')
     }
   return (
       <>
@@ -21,6 +33,15 @@ function Button2(props) {
         <input onChange={(e) => setInput(e.target.value)} value={input} type="number" />
         <button onClick={ clicked }>SUBMIT</button>
     </form>
+    <form action="">
+        <input onChange={(e) => setInputTodos(e.target.value)} value={inputTodos} type="text" />
+        <button onClick={ clickedTodos }>Todos</button>
+    </form>
+    <ol>
+      {arrTodos.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ol>
     </>
   )
 }

@@ -4,7 +4,7 @@ import secondReducer from "./secondReducer"
 
 const store = createStore(combineReducers({
     counter: counterReducer,
-    todo: secondReducer
+    todos: secondReducer
 }),
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )

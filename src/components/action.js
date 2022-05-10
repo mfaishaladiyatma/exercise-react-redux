@@ -8,7 +8,11 @@ const setCounterAction = (num) =>({
     type: 'setCounterAction',
     payload: num
 })
+const setTodosAction = (data) => ({
+    type: 'setTodosAction',
+    payload: data
+})
 
 export {
-    incrementAction, reductionAction, setCounterAction
+    incrementAction, reductionAction, setCounterAction, setTodosAction
 }

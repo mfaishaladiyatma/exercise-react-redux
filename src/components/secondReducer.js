@@ -3,5 +3,13 @@ const initialState = {
 }
 
 export default function secondReducer(state = initialState, action){
-    return state
+    switch (action.type){
+        case 'setTodosAction':
+            return{
+                ...state,
+                todo: action.payload
+            }
+        default:
+            return state
+    }
 }
