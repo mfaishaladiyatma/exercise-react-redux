@@ -17,7 +17,7 @@ export default function counterReducer(state = initialState, action) {
         case 'setCounterAction':
             return {
                 ...state,
-                count: action.payload * 1
+                count: action.payload * 1 // *1 untuk increment berjalan dengan lancar
             }
 
         default:

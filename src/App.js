@@ -3,7 +3,7 @@ import { incrementAction } from "./components/action"
 import Button2 from "./components/Button2";
 
 function App(props) {
-  const counter = useSelector((state) => state.count)
+  const counter = useSelector((state) => state.counter.count)
   const dispatch = useDispatch()
 
   return (
