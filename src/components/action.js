@@ -12,7 +12,10 @@ const setTodosAction = (data) => ({
     type: 'setTodosAction',
     payload: data
 })
-
+const reductionTodos = (id) => ({
+    type: 'reductionTodos',
+    payload: id
+})
 export {
-    incrementAction, reductionAction, setCounterAction, setTodosAction
+    incrementAction, reductionAction, setCounterAction, setTodosAction, reductionTodos
 }

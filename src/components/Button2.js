@@ -1,16 +1,15 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState } from 'react'
 import React from 'react'
-import { reductionAction, setCounterAction, setTodosAction } from "./action"
+import { reductionAction, reductionTodos, setCounterAction, setTodosAction } from "./action"
 
 function Button2(props) {
   const todos = useSelector((state) => state.todos.todo)
   const dispatch = useDispatch()
-  console.log(todos, '<<<TODOS')
+  // console.log(todos, '<<<TODOS')
 
     const [input, setInput] = useState('')
     const [inputTodos, setInputTodos] = useState('')
-    const [arrTodos, setArrTodos] = useState([])
     const clicked = (e) => {
       e.preventDefault()
       dispatch(setCounterAction(input))
@@ -19,10 +18,15 @@ function Button2(props) {
     const clickedTodos = (e) => {
       e.preventDefault()
       dispatch(setTodosAction(inputTodos))
-      setArrTodos([...arrTodos, inputTodos])
       setInputTodos("")
       console.log(todos, '<<<afterTODOS')
     }
+
+    // const clickedRemoveTodos = (e) => {
+    //   e.preventDefault()
+    //   dispatch(reductionTodos)
+    //   setInputTodos("")
+    // }
   return (
       <>
     <button onClick={() => { dispatch(reductionAction) }}>reduction</button>
@@ -38,10 +42,20 @@ function Button2(props) {
         <button onClick={ clickedTodos }>Todos</button>
     </form>
     <ol>
-      {arrTodos.map((item, index) => (
-        <li key={index}>{item}</li>
+      {todos.map((item, index) => (
+        <React.Fragment key={index}>
+        <li>
+          <div >{item}</div>
+          <button onClick={ () =>  (dispatch(reductionTodos(index))) }>X</button>
+        </li>
+        </React.Fragment>
       ))}
     </ol>
+    {/* <ol>
+      {arrTodos.forEach((data, index, array) => {
+        <li key={index}>{array}</li>
+      })}
+    </ol> */}
     </>
   )
 }
