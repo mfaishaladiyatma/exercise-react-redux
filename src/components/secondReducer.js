@@ -13,7 +13,7 @@ export default function secondReducer(state = initialState, action){
             console.log(action.payload)
             console.log(state.todo)
             return{
-                todo: state.todo.splice(action.payload, 2)
+                todo: state.todo.splice(action.payload, 1)
             }
         default:
             return state
